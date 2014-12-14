@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "jarvis" do |jarvis|
     jarvis.vm.hostname = "jarvis"
     jarvis.vm.network "private_network", ip: "33.33.33.3"
-    
+
     jarvis.vm.synced_folder("./data", "/data")
     config.vm.provider "virtualbox" do |vb|
       vb.name = "jarvis"
@@ -22,5 +22,5 @@ Vagrant.configure(2) do |config|
 
   end
 
-  # config.vm.provision "shell", path: "setup.sh", keep_color: "true"
+  config.vm.provision "shell", path: "setup.sh", keep_color: "true"
 end
