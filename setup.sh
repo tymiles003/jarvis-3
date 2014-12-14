@@ -30,7 +30,6 @@ sudo apt-get -y install postgresql-server-dev-9.3
 
 # install mongodb
 sudo apt-get -y install mongodb-org
-sudo apt-get -y install mongodb-dev
 
 # ================= server setup =================
 # percona setup
@@ -59,8 +58,7 @@ sudo service mongod restart
 
 # ================= package installs =================
 sudo apt-get -y install python-dev python-pip python-setuptools build-essential
-sudo apt-get -y install htop
+sudo apt-get -y install htop ifstat
 
 sudo pip install virtualenv
 sudo pip install csvkit
-sudo pip install ifstat
