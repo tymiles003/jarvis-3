@@ -9,30 +9,30 @@ echo "deb-src http://repo.percona.com/apt trusty main" >> /etc/apt/sources.list
 # postgres
 sudo touch /etc/apt/sources.list.d/pgdg.list
 sudo chmod a+w /etc/apt/sources.list.d/pgdg.list
-echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # mongo
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 
-sudo apt-get update
-sudo apt-get -y install python-dev
+sudo apt-get -y update
+sudo apt-get -y upgrade
 
 # install percona
 sudo debconf-set-selections <<< 'percona-server-server percona-server-server/root_password password t0ps3kr3t'
 sudo debconf-set-selections <<< 'percona-server-server percona-server-server/root_password_again password t0ps3kr3t'
 sudo apt-get -y install percona-server-server-5.6
+sudo apt-get -y install libmysqlclient-dev
 
 # install postgres
-sudo apt-get -y install postgresql-9.3 postgresql-9.3-postgis-2.1
+sudo apt-get -y install postgresql-9.3-postgis-2.1 pgadmin3 postgresql-contrib
 sudo apt-get -y install postgresql-server-dev-9.3
 
 # install mongodb
-sudo apt-get install -y mongodb-org
+sudo apt-get -y install mongodb-org
+sudo apt-get -y install mongodb-dev
 
 # ================= server setup =================
-sudo apt-get -y install libmysqlclient-dev
-
 # percona setup
 sudo cp /data/conf/my.cnf /etc/mysql/my.cnf
 sudo mysql -u root -pt0ps3kr3t -e "create user 'jesse'@'%' identified by 'jesse'"
@@ -54,3 +54,13 @@ sudo cp /data/conf/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
 sudo service postgresql restart
 
 # setup mongodb
+sudo cp /data/conf/mongod.conf /etc/mongod.conf
+sudo service mongod restart
+
+# ================= package installs =================
+sudo apt-get -y install python-dev python-pip python-setuptools build-essential
+sudo apt-get -y install htop
+
+sudo pip install virtualenv
+sudo pip install csvkit
+sudo pip install ifstat
