@@ -14,6 +14,10 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 # mongo
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+# nginx
+sudo apt-key add /data/conf/nginx_signing.key
+echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list
+echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -30,6 +34,9 @@ sudo apt-get -y install postgresql-server-dev-9.3
 
 # install mongodb
 sudo apt-get -y install mongodb-org
+
+# install nginx
+sudo apt-get -y install nginx
 
 # ================= server setup =================
 # percona setup
@@ -59,6 +66,7 @@ sudo service mongod restart
 # ================= package installs =================
 sudo apt-get -y install python-dev python-pip python-setuptools build-essential
 sudo apt-get -y install htop ifstat
+sudo apt-get -y install mutt
 
 sudo pip install virtualenv
 sudo pip install csvkit
