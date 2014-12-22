@@ -41,8 +41,8 @@ sudo apt-get -y install nginx
 # ================= server setup =================
 # percona setup
 sudo cp /data/conf/my.cnf /etc/mysql/my.cnf
-sudo mysql -u root -pt0ps3kr3t -e "create user 'jesse'@'%' identified by 'jesse'"
-sudo mysql -u root -pt0ps3kr3t -e "grant all privileges on *.* to 'jesse'@'%' with grant option"
+sudo mysql -u root -pt0ps3kr3t -e "create user 'vagrant'@'%' identified by 'vagrant'"
+sudo mysql -u root -pt0ps3kr3t -e "grant all privileges on *.* to 'vagrant'@'%' with grant option"
 sudo service mysql restart
 
 # setup postgres and postgis
