@@ -36,7 +36,6 @@ The first time you run `vagrant up` the box will be provisioned with the followi
 ||||[virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/)|
 ||||[csvkit](https://csvkit.readthedocs.org/en/0.9.0/)|
 
-
-## Configuration Files
+### Configuration Files
 
 Files used during provisioning for configuration are located at `/path/to/Jarivs/data/conf`
