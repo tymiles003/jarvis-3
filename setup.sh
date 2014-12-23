@@ -63,6 +63,10 @@ sudo service postgresql restart
 sudo cp /data/conf/mongod.conf /etc/mongod.conf
 sudo service mongod restart
 
+# setup nginx
+sudo cp /data/conf/nginx_defualt.conf /etc/nginx/conf.d/default.conf
+sudo service nginx restart
+
 # ================= package installs =================
 sudo apt-get -y install python-dev python-pip python-setuptools build-essential
 sudo apt-get -y install htop ifstat
