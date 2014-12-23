@@ -69,6 +69,7 @@ sudo service nginx restart
 
 # ================= package installs =================
 sudo apt-get -y install python-dev python-pip python-setuptools build-essential
+sudo apt-get -y install git
 sudo apt-get -y install htop ifstat
 sudo apt-get -y install mutt
 
